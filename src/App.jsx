@@ -8,10 +8,17 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Button } from '@material-ui/core';
+import { Button, InputBase, FormControl } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
+import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
 
-const drawerWidth = 200;
+const drawerWidth = 180;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +45,31 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  search: {
+    width: 220,
+    alignItems: 'center',
+    display: 'flex',
+    padding: '2px 10px',
+  },
+  sortBy: {
+    width: 220,
+
+    marginLeft: '16px',
+  },
+  filterBy: {
+    width: 220,
+  },
+  form: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
+  bag: {
+    width: 120,
+  },
+  iconBag: {
+    marginRight: theme.spacing(2),
+  },
 }));
 
 function App() {
@@ -52,7 +84,7 @@ function App() {
               SkyShop
             </Typography>
             <Box mr={2}>
-              <Button color="primery" variant="contained">Login</Button>
+              <Button color="inherit" variant="outlined">Login</Button>
             </Box>
             <Button color="secondary" variant="contained">Register</Button>
           </Toolbar>
@@ -77,16 +109,36 @@ function App() {
         </Drawer>
         <main className={classes.content}>
           <Toolbar />
-          <Typography paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididu
-            ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-            facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-            gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet
-          </Typography>
-          <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-            facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-          </Typography>
+          <Box className={classes.form}>
+            <Paper component="form" className={classes.search} elevation={3}>
+              <InputBase placeholder="Search" />
+              <IconButton type="submit" className={classes.iconButton} aria-label="search">
+                <SearchIcon />
+              </IconButton>
+            </Paper>
+            <Box>
+              <FormControl variant="outlined" className={classes.sortBy}>
+                <InputLabel id="sortBy">Sort by</InputLabel>
+                <Select label="Sort by">
+                  <MenuItem value={1}>Price hight to low</MenuItem>
+                  <MenuItem value={2}>Price low to hight</MenuItem>
+                  <MenuItem value={3}>What`s new</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl variant="outlined" className={classes.sortBy}>
+                <InputLabel id="FilterBy">Filter by</InputLabel>
+                <Select label="Filter by">
+                  <MenuItem value={1}>Size</MenuItem>
+                  <MenuItem value={2}>Product type</MenuItem>
+                  <MenuItem value={3}>Color</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+            <Button color="primary" variant="outlined" className={classes.bag}>
+              <LocalMallOutlinedIcon className={classes.iconBag} />
+              Bag
+            </Button>
+          </Box>
         </main>
       </div>
     </>
