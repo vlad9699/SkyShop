@@ -101,9 +101,7 @@ function App() {
                   <Box mr={2}>
                      <ModalFormForLogin />
                   </Box>
-                  <Button color='secondary' variant='contained'>
-                     <ModalFormForRegistration />
-                  </Button>
+                  <ModalFormForRegistration />
                </Toolbar>
             </AppBar>
             <Drawer

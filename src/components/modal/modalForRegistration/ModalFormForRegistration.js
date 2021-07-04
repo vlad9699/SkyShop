@@ -9,8 +9,8 @@ function rand() {
 }
 
 function getModalStyle() {
-   const top = 40 + rand();
-   const left = 42 + rand();
+   const top = 40;
+   const left = 43;
 
    return {
       top: `${top}%`,
@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
       height: 700,
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
+      borderRadius: '5px',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
    },
@@ -33,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ModalFormForRegistration() {
    const classes = useStyles();
-   // getModalStyle is not a pure function, we roll the style only on the first render
    const [modalStyle] = React.useState(getModalStyle);
    const [open, setOpen] = React.useState(false);
 

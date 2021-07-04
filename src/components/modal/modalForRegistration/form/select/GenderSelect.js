@@ -35,7 +35,7 @@ export default function GenderSelect() {
             variant='outlined'
          >
             <MenuItem value=''>
-               <em>Enother</em>
+               <em>Gender</em>
             </MenuItem>
             <MenuItem value={10}>Male</MenuItem>
             <MenuItem value={20}>Female</MenuItem>
