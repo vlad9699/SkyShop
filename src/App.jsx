@@ -25,7 +25,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import ModalFormForLogin from './components/modal/modalForLogIn/ModalFormForLogin';
 import ModalFormForRegistration from './components/modal/modalForRegistration/ModalFormForRegistration';
-
+import SelectForCategory from './components/Aside/SelectForCategory';
 const drawerWidth = 180;
 
 const useStyles = makeStyles((theme) => ({
@@ -54,15 +54,21 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
    },
    search: {
-      width: 220,
-      alignItems: 'center',
+      width: '100%',
+      height: '100%',
       display: 'flex',
-      padding: '2px 10px',
+      padding: '2px 15px',
+      [theme.breakpoints.down('xs')]: {
+         width: '100%',
+         marginRight: '10px',
+      },
    },
    sortBy: {
-      width: 220,
-
-      marginLeft: '16px',
+      width: '100%',
+      [theme.breakpoints.down('xs')]: {
+         width: '100%',
+         marginLeft: 0,
+      },
    },
    filterBy: {
       width: 220,
@@ -74,16 +80,69 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 30,
    },
    bag: {
-      width: 120,
+      width: '100%',
+      height: 57,
    },
    iconBag: {
       marginRight: theme.spacing(2),
    },
    cardWidth: {
       maxWidth: 345,
+      [theme.breakpoints.down('xs')]: {
+         maxWidth: 'none',
+      },
+      [theme.breakpoints.up('sm')]: {
+         marginLeft: '5%',
+      },
+      [theme.breakpoints.up('md')]: {
+         marginLeft: '15%',
+      },
    },
    buyBtn: {
       justifyContent: 'flex-end',
+   },
+   asideMobile: {
+      display: 'block',
+      width: '180px',
+      [theme.breakpoints.down('xs')]: {
+         display: 'none',
+      },
+   },
+   selectMobile: {
+      display: 'none',
+      [theme.breakpoints.down('xs')]: {
+         backgroundColor: theme.palette.secondary.main,
+         display: 'block',
+         width: '90%',
+         paddingLeft: 10,
+      },
+   },
+   paperM: {
+      paddingRight: 15,
+   },
+   containerForm: {
+      marginTop: '50px',
+      paddingLeft: 45,
+      [theme.breakpoints.down('xs')]: {
+         marginTop: 0,
+         paddingLeft: 0,
+      },
+      [theme.breakpoints.down('sm')]: {
+         paddingLeft: 0,
+      },
+   },
+   selectContainer: {
+      [theme.breakpoints.up('sm')]: {
+         display: 'none',
+      },
+   },
+   // searchIcon: {
+   //    [theme.breakpoints.up('md')]: {
+   //       width: 50,
+   //    },
+   // },
+   searchPlaceholder: {
+      width: '100%',
    },
 }));
 
@@ -105,7 +164,7 @@ function App() {
                </Toolbar>
             </AppBar>
             <Drawer
-               className={classes.drawer}
+               className={(classes.drawer, classes.asideMobile)}
                variant='permanent'
                classes={{
                   paper: classes.drawerPaper,
@@ -125,51 +184,75 @@ function App() {
                </div>
             </Drawer>
             <main className={classes.content}>
-               <Toolbar />
-               <Box className={classes.form}>
-                  <Paper
-                     component='form'
-                     className={classes.search}
-                     elevation={3}
-                  >
-                     <InputBase placeholder='Search' />
-                     <IconButton
-                        type='submit'
-                        className={classes.iconButton}
-                        aria-label='search'
+               <Grid container spacing={3} className={classes.containerForm}>
+                  <Grid item xs={12} className={classes.selectContainer}>
+                     <Paper className={(classes.paper, classes.paperM)}>
+                        <SelectForCategory className={classes.selectMobile} />
+                     </Paper>
+                  </Grid>
+                  <Grid item xs={12} sm={12} md={3}>
+                     <Paper
+                        component='form'
+                        className={classes.search}
+                        elevation={3}
                      >
-                        <SearchIcon />
-                     </IconButton>
-                  </Paper>
-                  <Box>
-                     <FormControl variant='outlined' className={classes.sortBy}>
-                        <InputLabel id='sortBy'>Sort by</InputLabel>
-                        <Select label='Sort by'>
-                           <MenuItem value={1}>Price hight to low</MenuItem>
-                           <MenuItem value={2}>Price low to hight</MenuItem>
-                           <MenuItem value={3}>What`s new</MenuItem>
-                        </Select>
-                     </FormControl>
-                     <FormControl variant='outlined' className={classes.sortBy}>
-                        <InputLabel id='FilterBy'>Filter by</InputLabel>
-                        <Select label='Filter by'>
-                           <MenuItem value={1}>Size</MenuItem>
-                           <MenuItem value={2}>Product type</MenuItem>
-                           <MenuItem value={3}>Color</MenuItem>
-                        </Select>
-                     </FormControl>
-                  </Box>
-                  <Button
-                     color='primary'
-                     variant='outlined'
-                     className={classes.bag}
-                  >
-                     <LocalMallOutlinedIcon className={classes.iconBag} />
-                     Bag
-                  </Button>
-               </Box>
-               <Grid container spacing={3}>
-                  <Grid item xs={6} lg={3}>
+                        <InputBase
+                           placeholder='Search'
+                           className={classes.searchPlaceholder}
+                        />
+                        <IconButton
+                           type='submit'
+                           className={classes.iconButton}
+                           aria-label='search'
+                        >
+                           <SearchIcon className={classes.searchIcon} />
+                        </IconButton>
+                     </Paper>
+                  </Grid>
+                  <Grid item xs={6} sm={4} md={3}>
+                     <Paper>
+                        <FormControl
+                           variant='outlined'
+                           className={classes.sortBy}
+                        >
+                           <InputLabel id='sortBy'>Sort by</InputLabel>
+                           <Select label='Sort by'>
+                              <MenuItem value={1}>Price hight to low</MenuItem>
+                              <MenuItem value={2}>Price low to hight</MenuItem>
+                              <MenuItem value={3}>What`s new</MenuItem>
+                           </Select>
+                        </FormControl>
+                     </Paper>
+                  </Grid>
+                  <Grid item xs={6} sm={4} md={3}>
+                     <Paper>
+                        <FormControl
+                           variant='outlined'
+                           className={classes.sortBy}
+                        >
+                           <InputLabel id='FilterBy'>Filter by</InputLabel>
+                           <Select label='Filter by'>
+                              <MenuItem value={1}>Size</MenuItem>
+                              <MenuItem value={2}>Product type</MenuItem>
+                              <MenuItem value={3}>Color</MenuItem>
+                           </Select>
+                        </FormControl>
+                     </Paper>
+                  </Grid>
+                  <Grid item xs={12} sm={4} md={3}>
+                     <Button
+                        color='primary'
+                        variant='outlined'
+                        className={classes.bag}
+                     >
+                        <LocalMallOutlinedIcon className={classes.iconBag} />
+                        Bag
+                     </Button>
+                  </Grid>
+               </Grid>
+               <Toolbar />
+               <Grid justify='space-around' container spacing={3}>
+                  <Grid item xs={12} sm={6} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -206,7 +289,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={6} lg={3}>
+                  <Grid item xs={12} sm={6} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -221,7 +304,7 @@ function App() {
                                  variant='h5'
                                  component='h2'
                               >
-                                 Nike Air Vapormax Evo
+                                 Nike Air Vapormax
                               </Typography>
                               <Typography
                                  variant='body2'
@@ -243,7 +326,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={6} lg={3}>
+                  <Grid item xs={12} sm={6} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -280,7 +363,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={6} lg={3}>
+                  <Grid item xs={12} sm={6} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -317,7 +400,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={6} lg={3}>
+                  <Grid item xs={12} sm={6} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -354,7 +437,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={6} lg={3}>
+                  <Grid item xs={12} sm={6} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -391,7 +474,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={6} lg={3}>
+                  <Grid item xs={12} sm={6} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -428,7 +511,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={6} lg={3}>
+                  <Grid item xs={12} sm={6} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia

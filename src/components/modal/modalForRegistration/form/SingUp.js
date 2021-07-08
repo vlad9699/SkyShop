@@ -85,10 +85,10 @@ export default function SignUp() {
                         autoComplete='lname'
                      />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={6} sm={6}>
                      <DateSelect />
                   </Grid>
-                  <Grid item xs={12} sm={6}>
+                  <Grid item xs={6} sm={6}>
                      <GenderSelect />
                   </Grid>
                   <Grid item xs={12}>

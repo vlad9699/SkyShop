@@ -29,6 +29,12 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: '5px',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
+      [theme.breakpoints.down('sm')]: {
+         width: '110%',
+         height: '100%',
+         overflow: 'auto',
+         marginLeft: -20,
+      },
    },
 }));
 
