@@ -57,7 +57,7 @@ export default function ModalFormForLogin() {
 
    return (
       <div>
-         <Button color='primery' variant='contained' onClick={handleOpen}>
+         <Button color='inherit' variant='outlined' onClick={handleOpen}>
             Sing In
          </Button>
          <Modal

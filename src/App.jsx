@@ -91,12 +91,6 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.down('xs')]: {
          maxWidth: 'none',
       },
-      [theme.breakpoints.up('sm')]: {
-         marginLeft: '5%',
-      },
-      [theme.breakpoints.up('md')]: {
-         marginLeft: '15%',
-      },
    },
    buyBtn: {
       justifyContent: 'flex-end',
@@ -122,13 +116,8 @@ const useStyles = makeStyles((theme) => ({
    },
    containerForm: {
       marginTop: '50px',
-      paddingLeft: 45,
       [theme.breakpoints.down('xs')]: {
          marginTop: 0,
-         paddingLeft: 0,
-      },
-      [theme.breakpoints.down('sm')]: {
-         paddingLeft: 0,
       },
    },
    selectContainer: {
@@ -252,7 +241,7 @@ function App() {
                </Grid>
                <Toolbar />
                <Grid justify='space-around' container spacing={3}>
-                  <Grid item xs={12} sm={6} lg={3}>
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -289,7 +278,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={12} sm={6} lg={3}>
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -326,7 +315,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={12} sm={6} lg={3}>
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -363,7 +352,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={12} sm={6} lg={3}>
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -400,7 +389,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={12} sm={6} lg={3}>
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -437,7 +426,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={12} sm={6} lg={3}>
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -474,7 +463,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={12} sm={6} lg={3}>
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
@@ -511,7 +500,7 @@ function App() {
                         </CardActions>
                      </Card>
                   </Grid>
-                  <Grid item xs={12} sm={6} lg={3}>
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
                      <Card className={classes.cardWidth}>
                         <CardActionArea>
                            <CardMedia
