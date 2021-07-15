@@ -135,6 +135,9 @@ const useStyles = makeStyles((theme) => ({
    searchPlaceholder: {
       width: '100%',
    },
+   NavLink: {
+      textDecoration: 'none',
+   },
 }));
 
 function App() {
@@ -167,11 +170,15 @@ function App() {
                      <List>
                         {['Clothing', 'Shoes', 'Accessories', 'Sportwear'].map(
                            (text) => (
-                              <ListItem button key={text}>
-                                 <NavLink to={`/${text}`}>
+                              // eslint-disable-next-line react/jsx-key
+                              <NavLink
+                                 to={`/${text}`}
+                                 className={classes.NavLink}
+                              >
+                                 <ListItem button key={text}>
                                     <ListItemText primary={text} />
-                                 </NavLink>
-                              </ListItem>
+                                 </ListItem>
+                              </NavLink>
                            )
                         )}
                      </List>
@@ -251,7 +258,7 @@ function App() {
                      </Grid>
                   </Grid>
                   <Toolbar />
-                  <Route path='' component={Home} />
+                  <Route path='/index' component={Home} />
                   <Route path='/clothing' component={Clothing} />
                   <Route path='/shoes' component={Shoes} />
                   <Route path='/accessories' component={Accessories} />
