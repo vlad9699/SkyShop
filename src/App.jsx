@@ -258,7 +258,7 @@ function App() {
                      </Grid>
                   </Grid>
                   <Toolbar />
-                  <Route path='/index' component={Home} />
+                  <Route path='/' component={Home} />
                   <Route path='/clothing' component={Clothing} />
                   <Route path='/shoes' component={Shoes} />
                   <Route path='/accessories' component={Accessories} />
